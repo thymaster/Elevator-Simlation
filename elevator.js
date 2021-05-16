@@ -25,8 +25,9 @@ class Elevator {
             Elevator.prototype.doorsOpen = false;
         };
 
-        // Elevator.prototype.shiftElevator = function (elevatorBody, requestedFloor) {                  //new addition
-        //     elevatorBody.style.transform = translateY((-205px * requestedFloor));
+        // Elevator.prototype.shiftElevatorUp = function (elevatorBody, requestedFloor) { 
+        //     moveByPixel = requestedFloor * 205 + "px"                 //new addition
+        //     elevatorBody.style.transform = translateY(moveByPixel);
         // }
 
         // Elevator.prototype.shiftElevatorDown = function (pixels) {
@@ -68,7 +69,7 @@ class Panel {
         //     // stoplift.innerText = 
         // }
 
-        // Panel.prototype.shiftElevator = function (elevatorBody, requestedFloor) {                           //new addition
+        // Panel.prototype.shiftElevatorUp = function (elevatorBody, requestedFloor) {                           //new addition
         //     elevatorBody.style.transform = translateY((-205 + "px") * requestedFloor);
         // }
 
@@ -102,6 +103,7 @@ class Panel {
                         setTimeout(Panel.prototype.pauseInput.bind(Panel.prototype), travelTime);
                         elevator.currentFloor = requestedFloor;
                         let elevatorDoors = document.querySelectorAll(".elevator-door");                
+                        
                         // let elevatorBody = document.querySelector("#elevator");                         //for moving the lift
                         elevator.openDoors(elevatorDoors);                         
                         setTimeout(elevator.closeDoors.bind(Panel.prototype, elevatorDoors), elevator.doorOpenTime * 1000); 
@@ -127,7 +129,8 @@ class Panel {
 let elevator = new Elevator();
 let panel = new Panel(elevator);
 
-
+//Elevator button - > click event id, if presentFlooor!- id movebY = 205* "px" tranform . 
+// x.getBoundingClientRect()
 
 // for lateral movement of the elevator using pixel
 // let startLift = 86;
@@ -155,7 +158,7 @@ let panel = new Panel(elevator);
 // function move(idValue){
 //     startLift = endLift;
 //     let end = array[idValue - 1]
-//     let LiftMove = end - startLift;
+//     let LiftMove = end - startLift;*
 //     let start = document.getElementById("elevator");
 //     animation(startLift, end, LiftMove, start);
 //     endLift = end;
