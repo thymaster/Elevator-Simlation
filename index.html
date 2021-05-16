@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevator Simulation</title>
+    <link rel="stylesheet" href="./elevator.css" />
+</head>
+
+<body>
+    <div class="simulator">
+        <div class="leftside">
+            <div id="feedback-panel">
+                <div id="directional-arrows">
+                    <img id="up-arrow"
+                        src="https://drive.google.com/uc?export=view&id=1qdazZI7Up-xMaidLLorgYtTTzP_pOjAD" height="20px"
+                        width="20px" />
+                    <img id="down-arrow"
+                        src="https://drive.google.com/uc?export=view&id=1bDPC6QDSA9__swiKJr8wLcfLr_GtUPyM" height="20px"
+                        width="20px" />
+                </div>
+                <div id="floor-number">1</div>
+                <div class="arrived" id="arrived-notification"></div>
+            </div>
+            <div id="panel">
+                <div id="panel-display">1</div>
+                <div id="panel-input">
+                    <table>
+                        <tr>
+                            <td class="panel-input-button" id="4"><button>4</button></td>
+                            <td class="panel-input-button" id="3"><button>3</button></td>
+                        </tr>
+                        <tr>
+                            <td class="panel-input-button" id="2"><button>2</button></td>
+                            <td class="panel-input-button" id="1"><button>1</button></td>
+                        </tr>
+                    </table>
+                    <div id="go"><button>Go</button></div>
+                    <div id="stop"><button>Stop</button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rightside">
+            <div id="elevator">
+                <div class="elevator-door" id="left-elevator-door"></div>
+                <div class="elevator-door" id="right-elevator-door"></div>
+            </div>
+
+            <div class="building">
+                <div class="block">
+                    <h4>4<sup>th</sup>Floor</h4>
+                </div>
+                <div class="block">
+                    <h4>3<sup>rd</sup>Floor</h4>
+                </div>
+                <div class="block">
+                    <h4>2<sup>nd</sup>Floor</h4>
+                </div>
+                <div class="block">
+                    <h4>1<sup>st</sup>Floor</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./elevator.js"></script>
+</body>
+
+</html>
