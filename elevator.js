@@ -2,42 +2,42 @@ const doorOpenSpeed = 1;
 
 class Elevator {
     constructor() {
-        Elevator.prototype.currentFloor = 1;
-        Elevator.prototype.speed = 1;
-        Elevator.prototype.doorOpenTime = 1;
-        Elevator.prototype.doorsOpen = false;
-        Elevator.prototype.isMoving = false;
-        Elevator.prototype.availableFloors = Array.from({ length: 5 }, (min, max) => max + 1);    //use {length-1} while using this.opendoors()
-
+        this.currentFloor = 1;
+        this.speed = 1;
+        this.doorOpenTime = 1;
+        this.doorsOpen = false;
+        this.isMoving = false;
+        this.availableFloors = Array.from({ length: 5 }, (min, max) => max + 1);    //use {length-1} while using this.opendoors()
+    }
+        // opendoors () {} 
         // function for opening the door
         // this.openDoors = function (doors) {
-        Elevator.prototype.openDoors = function (doors) {
+        openDoors (doors) {
             for (let i = 0; i < doors.length; i++)
                 doors[i].classList.add(doors[i].id + "-moved");
-            Elevator.prototype.doorsOpen = true;
+            this.doorsOpen = true;
         };
 
         // function for closing the door
         // this.closeDoors = function (doors) {
-        Elevator.prototype.closeDoors = function (doors) {
+        closeDoors (doors) {
             for (let i = 0; i < doors.length; i++)
                 doors[i].classList.remove(doors[i].id + "-moved");
-            Elevator.prototype.doorsOpen = false;
+            doorsOpen = false;
         };
 
-        Elevator.prototype.shiftElevator = function (travelTime, reqFlr, currFlr) {
+        shiftElevator (travelTime, reqFlr, currFlr) {
             let body = document.getElementById("elevator");
-      
             body.style.transition = `${travelTime / 1000}s`;
             body.style.transform = `translate(0px,${205 * (1 - reqFlr)}px)`;
           };
 
-        // Elevator.prototype.shiftElevatorUp = function (elevatorBody, requestedFloor) { 
-        //     moveByPixel = requestedFloor * 205 + "px"                 //new addition
+        // shiftElevatorUp = function (elevatorBody, requestedFloor) { 
+        //     let moveByPixel = requestedFloor * 205 + "px"                 //new addition
         //     elevatorBody.style.transform = translateY(moveByPixel);
         // }
 
-        // Elevator.prototype.shiftElevatorDown = function (pixels) {
+        // shiftElevatorDown = function (pixels) {
 
         // }
 
@@ -47,12 +47,12 @@ class Elevator {
         //                         at 3rd floor => -410px
         //                         at 4th floor => -615px
     }
-}
+
 
 class Panel {
     constructor(elevator) {
         let go = document.querySelector("#go");
-        let stop = document.querySelector("#stop");                             // new modification
+        let stop = document.querySelector("#stop");                          
         let inputButtons = document.querySelectorAll(".panel-input-button");
 
         Panel.prototype.updateDisplay = function (floor) {
@@ -69,16 +69,6 @@ class Panel {
             let arrivalNotification = document.querySelector("#arrived-notification");
             arrivalNotification.innerText = "*";
         };
-
-        // Panel.prototype.stopElevator = function() {                             //new addition
-        //     elevator.isMoving = false;
-        //     // let stoplift = document.querySelector("#elevator");
-        //     // stoplift.innerText = 
-        // }
-
-        // Panel.prototype.shiftElevatorUp = function (elevatorBody, requestedFloor) {                           //new addition
-        //     elevatorBody.style.transform = translateY((-205 + "px") * requestedFloor);
-        // }
 
         Panel.prototype.moveElevator = function () {
             let requestedFloor = document.querySelector("#panel-display").innerText;
