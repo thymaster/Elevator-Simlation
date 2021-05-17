@@ -25,6 +25,13 @@ class Elevator {
             Elevator.prototype.doorsOpen = false;
         };
 
+        Elevator.prototype.shiftElevator = function (travelTime, reqFlr, currFlr) {
+            let body = document.getElementById("elevator");
+      
+            body.style.transition = `${travelTime / 1000}s`;
+            body.style.transform = `translate(0px,${205 * (1 - reqFlr)}px)`;
+          };
+
         // Elevator.prototype.shiftElevatorUp = function (elevatorBody, requestedFloor) { 
         //     moveByPixel = requestedFloor * 205 + "px"                 //new addition
         //     elevatorBody.style.transform = translateY(moveByPixel);
@@ -94,11 +101,12 @@ class Panel {
                             upArrow.classList.add("hide");
                         }   
 
-                        let travelTime = Math.abs(requestedFloor - elevator.currentFloor) *
-                            (elevator.speed * 1000) +
+                        let diff = Math.abs(requestedFloor - elevator.currentFloor);
+                        let travelTime =  diff * (elevator.speed * 1000) +
                             doorOpenSpeed * 1000 +
                             elevator.doorOpenTime * 1000;
-                        let arrivalTime = travelTime;
+                        let arrivalTime = travelTime + diff*1000;
+                        let elevatorMoveTime = Math.abs(requestedFloor - elevator.currentFloor) * 1000 + 1000;
 
                         setTimeout(Panel.prototype.pauseInput.bind(Panel.prototype), travelTime);
                         elevator.currentFloor = requestedFloor;
@@ -106,9 +114,8 @@ class Panel {
                         
                         // let elevatorBody = document.querySelector("#elevator");                         //for moving the lift
                         elevator.openDoors(elevatorDoors);                         
-                        setTimeout(elevator.closeDoors.bind(Panel.prototype, elevatorDoors), elevator.doorOpenTime * 1000); 
-                        // elevator.shiftElevator(pixels);                             //fix this  
-                        // setTimeout(elevator.shiftElevator.bind(Panel.prototype, elevatorBody), arrivalTime);             //move_elevator
+                        setTimeout(elevator.closeDoors.bind(Panel.prototype, elevatorDoors), elevator.doorOpenTime * 1000);
+                        setTimeout(elevator.shiftElevator.bind(Panel.prototype, elevatorMoveTime, requestedFloor, elevator.currentFloor), elevatorMoveTime);             //move_elevator
                         setTimeout(elevator.openDoors.bind(Panel.prototype, elevatorDoors), arrivalTime);                   
                         setTimeout(elevator.closeDoors.bind(Panel.prototype, elevatorDoors),                               
                             arrivalTime + elevator.doorOpenTime * 1000);

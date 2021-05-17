@@ -65,6 +65,12 @@ button{
 	overflow: hidden;
 }
 
+#btn-container {
+	display: flex;
+    flex-direction: column;
+	padding: 5px 5px;
+}
+
 .left-elevator-door-moved {               
 	transform: translateX(-125px);
 	transition: 1s;
@@ -106,7 +112,7 @@ button{
 	background-color: #bcc6cc;
     border: 1px solid black;
     width: 98px;
-    height: 200px;
+    height: 195px;
     bottom: 50%;
 }
 
